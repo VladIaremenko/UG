@@ -5,12 +5,13 @@ namespace UGA.Assets.Scripts._ProceduralMesh
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
     public class MeshGenerator : MonoBehaviour
     {
+        [SerializeField] private MeshFilter _meshFilter;
         [SerializeField] private int _xSize, _ySize;
 
         private Vector3[] _vertices;
         private Mesh _mesh;
 
-        private void Start()
+        private void Awake()
         {
             Generate();
         }
@@ -18,7 +19,7 @@ namespace UGA.Assets.Scripts._ProceduralMesh
         private void Generate()
         {
             _mesh = new Mesh();
-            GetComponent<MeshFilter>().mesh = _mesh;
+            _meshFilter.mesh = _mesh;
             _mesh.name = "Grid";
 
             _vertices = new Vector3[(_xSize + 1) * (_ySize + 1)];
