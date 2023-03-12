@@ -42,13 +42,13 @@ Shader "Unlit/GenMeshShader_Shader"
             v2f vert (appdata v)
             {
                 v2f o;
-
-                o.vertex = UnityObjectToClipPos(v.vertex);
-
+     
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 
-                o.vertex.y += sin((o.uv.x + _Time * _waveSpeed) * _waveFrequency) * _waveAmplitude;
+                v.vertex.z += sin((o.uv.x + _Time * _waveSpeed) * _waveFrequency) * _waveAmplitude;
 
+                o.vertex = UnityObjectToClipPos(v.vertex);
+            
                 return o;
             }
 
