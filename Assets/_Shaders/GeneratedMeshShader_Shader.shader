@@ -3,13 +3,15 @@ Shader "Unlit/GenMeshShader_Shader"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _speed("Speed", Float) = 0.2
+        _scrollSpeed("ScrollSpeed", Float) = 0.2
+        _waveSpeed("WavellSpeed", Float) = 0.2
+        _waveFrequency("WaveFrequency", Float) = 3
+        _waveAmplitude("WaveAmplitude", Float) = 3
     }
     SubShader
     {
         Tags { "RenderType"="Opaque" }
-        LOD 100
-
+     
         Pass
         {
             CGPROGRAM
@@ -32,20 +34,27 @@ Shader "Unlit/GenMeshShader_Shader"
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
-            float _speed;
+            float _scrollSpeed;
+            float _waveSpeed;
+            float _waveAmplitude;
+            float _waveFrequency;
 
             v2f vert (appdata v)
             {
                 v2f o;
+
                 o.vertex = UnityObjectToClipPos(v.vertex);
+
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-                UNITY_TRANSFER_FOG(o,o.vertex);
+
+                o.vertex.y += sin((o.uv.x + _Time * _waveSpeed) * _waveFrequency) * _waveAmplitude;
+
                 return o;
             }
 
             fixed4 frag (v2f i) : SV_Target
             {
-                i.uv.x += _Time * _speed;
+                i.uv.x += _Time * _scrollSpeed;
                 fixed4 col = tex2D(_MainTex, i.uv);
          
                 return col;
