@@ -1,29 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace UGA.Assets.Scripts._Algo
 {
     public class Station : MonoBehaviour
     {
+        [SerializeField] private LineRenderer _lineRenderer;
         [SerializeField] private List<Station> _connectedStations;
-        [SerializeField] private List<LineRenderer> _renderers;
 
-        internal void Init()
+        public List<Station> ConnectedStations => _connectedStations;
+
+        public Station ParentStation { get; set; }
+
+        internal void TryAddStation(Station station)
         {
-            _renderers.Clear();
-
-            foreach (var item in _connectedStations)
+            if (!_connectedStations.Contains(station) && !station.IsUnityNull())
             {
-                var renderer = gameObject.AddComponent<LineRenderer>();
-
-                renderer.positionCount = 2;
-
-                renderer.SetPosition(0, transform.position);
-                renderer.SetPosition(0, item.transform.position);
-
-                _renderers.Add(renderer);
-            }            
+                _connectedStations.Add(station);
+            }
         }
     }
 }
