@@ -134,29 +134,14 @@ GameObject:
   - component: {fileID: 475319833}
   - component: {fileID: 475319832}
   - component: {fileID: 475319831}
-  - component: {fileID: 475319830}
+  - component: {fileID: 475319834}
   m_Layer: 0
-  m_Name: MeshGenerator
+  m_Name: MeshGenerator_Shader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &475319830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 475319829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34caa2a0c1ec81d4d8d07ce04d586595, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _meshFilter: {fileID: 0}
-  _xSize: 9
-  _ySize: 5
+  m_IsActive: 1
 --- !u!23 &475319831
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -177,7 +162,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c4d9b7a3ad725704d9633b8cb9e0bec4, type: 2}
+  - {fileID: 2100000, guid: f28ea0d823c0fbb468790ca7b2eb3f40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -222,6 +207,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &475319834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475319829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34caa2a0c1ec81d4d8d07ce04d586595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meshFilter: {fileID: 475319832}
+  _xSize: 9
+  _ySize: 5
 --- !u!1 &608800828
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 608800833}
   - component: {fileID: 608800834}
   m_Layer: 0
-  m_Name: MeshGenerator
+  m_Name: MeshGenerator_CPU
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
