@@ -8,13 +8,7 @@ namespace UGA.Assets.Scripts._ProceduralMesh
         [SerializeField] private MeshFilter _meshFilter;
         [SerializeField] private float _speed;
 
-
         private Vector3[] _verticies;
-
-        private void Start()
-        {
-            //UpdateMesh();
-        }
 
         private void Update()
         {
