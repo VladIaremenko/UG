@@ -101,11 +101,9 @@ namespace UGA.Assets.Scripts._Algo
                     return;
                 }
 
-                if(!nextRoundList.Contains(item))
+                if (!nextRoundList.Contains(item))
                 {
                     nextRoundList.Add(item);
-
-                    Debug.Log(nextRoundList.Count);
                 }
             }
         }
@@ -131,6 +129,21 @@ namespace UGA.Assets.Scripts._Algo
                 {
                     _lineRenderer.SetPosition(i, calculatedPath[i].transform.position);
                 }
+
+                var steps = 0;
+
+                for (int i = 0; i < calculatedPath.Count; i++)
+                {
+                    if (i < calculatedPath.Count - 1)
+                    {
+                        if (calculatedPath[i].ParentRoute != calculatedPath[i + 1].ParentRoute)
+                        {
+                            steps++;
+                        }
+                    }
+                }
+
+                _algoViewModel.UpdateCalculationsData(steps, calculatedPath.Count);
             }
             else
             {
