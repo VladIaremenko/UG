@@ -25,35 +25,100 @@ namespace UGA.Assets.Scripts._Algo
                 return;
             }
 
-            List<Station> stationsToCheck = new();
+            Calculate();
+        }
+
+        private void Calculate()
+        {
             List<Station> visitedStations = new();
-            List<Station> calculatedPath = new();
+            List<Station> stationsToVisit = new();
+            List<Station> nextRoundList = new();
+
+            Refresh();
 
             var startStation = _selectedStations[0];
             var finishStation = _selectedStations[1];
 
-            stationsToCheck.Add(startStation);
+            stationsToVisit.Add(startStation);
 
-            //Try to find path in 100 steps
             for (int i = 0; i < 100; i++)
             {
-                if (calculatedPath.Count > 0)
+                nextRoundList.Clear();
+
+                foreach (var item in stationsToVisit)
                 {
+                    Debug.Log(item.name + "UPUPUP");
+
+                    if (!visitedStations.Contains(item))
+                    {
+                        visitedStations.Add(item);
+                    }
+                    else
+                    {
+                        continue;
+                    }
+
+                    CheckSingleStation(item, startStation, finishStation, visitedStations, nextRoundList);
+
+                    if (nextRoundList == null)
+                    {
+                        Debug.Log("NULL");
+                        return;
+                    }
+                }
+
+                Debug.Log(nextRoundList.Count);
+                stationsToVisit = nextRoundList;
+            }
+        }
+
+        private void Refresh()
+        {
+            foreach (var item in _routes)
+            {
+                item.Refresh();
+            }
+        }
+
+        private void CheckSingleStation(Station currentStation, Station startStation, Station finistStation, List<Station> visitedStations, List<Station> nextRoundList)
+        {
+            Debug.Log("======================");
+
+            //Debug.Log(currentStation.name + " :::: ");
+
+            foreach (var item in currentStation.ConnectedStations)
+            {
+                if (visitedStations.Contains(item))
+                {
+                    continue;
+                }
+
+                if (item.ParentStation == null)
+                {
+                    item.transform.localScale = Vector3.one * 1.5f;
+                    item.ParentStation = currentStation;
+                }
+
+                if (item == startStation)
+                {
+                    item.ParentStation = null;
+                }
+
+                if (item == finistStation)
+                {
+                    Debug.Log("Success");
+                    CalculateReturnPath(item, startStation, new List<Station>());
                     return;
                 }
 
-                RunCalculation(finishStation, stationsToCheck, visitedStations, calculatedPath);
-
-                if (stationsToCheck.Count == 0)
+                if(!nextRoundList.Contains(item))
                 {
-                    Debug.Log("Can't find path");
-
-                    visitedStations.ForEach(x => x.ParentStation = null);
-                    stationsToCheck.ForEach(x => x.ParentStation = null);
-
-                    return;
+                    //Debug.Log(item.name);
+                    nextRoundList.Add(item);
                 }
             }
+
+            //Debug.Log(nextRoundList.Count);
         }
 
         [ContextMenu("Init")]
@@ -65,69 +130,18 @@ namespace UGA.Assets.Scripts._Algo
             }
         }
 
-        private void RunCalculation(Station finishStation, List<Station> stationsToCheck,
-            List<Station> visitedStations, List<Station> calculatedPath)
+
+        private void CalculateReturnPath(Station station, Station startStation, List<Station> calculatedPath)
         {
-            var currentStation = stationsToCheck[0];
+            Debug.Log(station.name);
 
-            if (visitedStations.Contains(currentStation))
-            {
-                return;
-            }
-
-            if (!stationsToCheck.Contains(currentStation))
-            {
-                stationsToCheck.Add(currentStation);
-            }
-
-            currentStation.ConnectedStations.Sort((x, y) => CompareStations(x, y, finishStation));
-
-            foreach (var item in currentStation.ConnectedStations)
-            {
-                if (visitedStations.Contains(item))
-                {
-                    continue;
-                }
-
-                item.ParentStation = currentStation;
-
-                if (!stationsToCheck.Contains(item))
-                {
-                    stationsToCheck.Add(item);
-                }
-
-                if (item == finishStation)
-                {
-                    CalculateReturnPath(item, calculatedPath, 0);
-
-                    item.ParentStation = null;
-
-                    visitedStations.ForEach(x => x.ParentStation = null);
-                    stationsToCheck.ForEach(x => x.ParentStation = null);
-                }
-            }
-
-            stationsToCheck.Remove(currentStation);
-            visitedStations.Add(currentStation);
-        }
-
-        private int CompareStations(Station x, Station y, Station finishStation)
-        {
-            var xDistance = Vector3.Distance(x.transform.position, finishStation.transform.position);
-            var yDistance = Vector3.Distance(y.transform.position, finishStation.transform.position);
-
-            return (int)xDistance - (int)yDistance;
-        }
-
-        private void CalculateReturnPath(Station station, List<Station> calculatedPath, int routeChanges)
-        {
             calculatedPath.Add(station);
 
             if (station.ParentStation == null)
             {
-                _lineRenderer.positionCount = calculatedPath.Count;
+                Debug.Log(calculatedPath.Count);
 
-                CheckIntersections(calculatedPath);
+                _lineRenderer.positionCount = calculatedPath.Count;
 
                 for (int i = 0; i < calculatedPath.Count; i++)
                 {
@@ -136,33 +150,9 @@ namespace UGA.Assets.Scripts._Algo
             }
             else
             {
-                CalculateReturnPath(station.ParentStation, calculatedPath, routeChanges);
+                CalculateReturnPath(station.ParentStation, startStation, calculatedPath);
             }
         }
-
-        private void CheckIntersections(List<Station> calculatedPath)
-        {
-            var laneChanges = 0;
-
-            for (int i = 0; i < calculatedPath.Count; i++)
-            {
-                if (i + 1 >= calculatedPath.Count)
-                {
-                    continue;
-                }
-
-                var current = calculatedPath[i];
-                var next = calculatedPath[i + 1];
-
-                if (current.ParentRoute != next.ParentRoute)
-                {
-                    laneChanges++;
-                }
-            }
-
-            _algoViewModel.UpdateCalculationsData(calculatedPath.Count - 1, laneChanges);
-        }
-
 
         private void Update()
         {

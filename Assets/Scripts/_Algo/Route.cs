@@ -38,5 +38,14 @@ namespace UGA.Assets.Scripts._Algo
                 _lineRenderer.SetPosition(i, _stations[i].transform.position);
             }
         }
+
+        internal void Refresh()
+        {
+            for (int i = 0; i < _stations.Count; i++)
+            {
+                _stations[i].ParentStation = null;
+                _stations[i].name = gameObject.name + i;
+            }
+        }
     }
 }
