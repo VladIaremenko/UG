@@ -44,6 +44,16 @@ namespace UGA.Assets.Scripts._Algo
                 }
 
                 RunCalculation(finishStation, stationsToCheck, visitedStations, calculatedPath);
+
+                if(stationsToCheck.Count == 0)
+                {
+                    Debug.Log("Can't find path");
+
+                    visitedStations.ForEach(x => x.ParentStation = null);
+                    stationsToCheck.ForEach(x => x.ParentStation = null);
+
+                    return;
+                }
             }
         }
 
@@ -59,16 +69,6 @@ namespace UGA.Assets.Scripts._Algo
         private void RunCalculation(Station finishStation, List<Station> stationsToCheck,
             List<Station> visitedStations, List<Station> calculatedPath)
         {
-            if(stationsToCheck.Count == 0)
-            {
-                Debug.Log("Can't find path");
-
-                visitedStations.ForEach(x => x.ParentStation = null);
-                stationsToCheck.ForEach(x => x.ParentStation = null);
-
-                return;
-            }
-
             var currentStation = stationsToCheck[0];
 
             if (visitedStations.Contains(currentStation))
