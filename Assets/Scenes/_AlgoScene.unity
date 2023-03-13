@@ -1284,7 +1284,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Steps : 5\nLane changes: 5'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1373,6 +1373,7 @@ GameObject:
   - component: {fileID: 839025872}
   - component: {fileID: 839025871}
   - component: {fileID: 839025870}
+  - component: {fileID: 839025874}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1464,6 +1465,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &839025874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839025869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb5d04002c14ae74d808ca2846b77c49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _algoViewModel: {fileID: 11400000, guid: d7471a1ab15247d47b9cd689715fa016, type: 2}
+  _text: {fileID: 837521699}
 --- !u!1001 &840938496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2818,6 +2833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafbc307dda120e43bb2b6bf49b68646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _algoViewModel: {fileID: 11400000, guid: d7471a1ab15247d47b9cd689715fa016, type: 2}
   _lineRenderer: {fileID: 1521547244}
   _routes:
   - {fileID: 1504349212}
@@ -3864,7 +3880,7 @@ LineRenderer:
   - {x: 6.3, y: -18.4, z: 0}
   - {x: 19.2, y: -18.1, z: 0}
   - {x: 20.2, y: -11, z: 0}
-  - {x: 13.7, y: -0.6999998, z: 0}
+  - {x: 10.64, y: -0.6999998, z: 0}
   - {x: 1.4, y: 0.099999905, z: 0}
   m_Parameters:
     serializedVersion: 3

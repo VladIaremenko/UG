@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 namespace UGA.Assets.Scripts._Algo
 {
     public class PathCalculator : MonoBehaviour
     {
+        [SerializeField] private AlgoViewModel _algoViewModel;
         [SerializeField] private LineRenderer _lineRenderer;
         [SerializeField] private List<Route> _routes;
 
@@ -45,7 +44,7 @@ namespace UGA.Assets.Scripts._Algo
 
                 RunCalculation(finishStation, stationsToCheck, visitedStations, calculatedPath);
 
-                if(stationsToCheck.Count == 0)
+                if (stationsToCheck.Count == 0)
                 {
                     Debug.Log("Can't find path");
 
@@ -143,7 +142,7 @@ namespace UGA.Assets.Scripts._Algo
 
         private void CheckIntersections(List<Station> calculatedPath)
         {
-            var changes = 0;
+            var laneChanges = 0;
 
             for (int i = 0; i < calculatedPath.Count; i++)
             {
@@ -155,14 +154,13 @@ namespace UGA.Assets.Scripts._Algo
                 var current = calculatedPath[i];
                 var next = calculatedPath[i + 1];
 
-                if(current.ParentRoute != next.ParentRoute)
+                if (current.ParentRoute != next.ParentRoute)
                 {
-                    changes++;
+                    laneChanges++;
                 }
             }
 
-            //Debug.Log(changes);
-            Debug.Log(calculatedPath.Count);
+            _algoViewModel.UpdateCalculationsData(calculatedPath.Count - 1, laneChanges);
         }
 
 
