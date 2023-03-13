@@ -19,7 +19,7 @@ namespace UGA.Assets.Scripts._Algo
         public void CalculatePath()
         {
             //We will use A* pathfinding algo. Path lenght is irrenevant.
-            //We just will look for smallest steps count and ignore distance.
+            //We just will look for smallest lineChanges count and ignore distance.
             if (_selectedStations.Count < 2)
             {
                 return;
@@ -130,7 +130,7 @@ namespace UGA.Assets.Scripts._Algo
                     _lineRenderer.SetPosition(i, calculatedPath[i].transform.position);
                 }
 
-                var steps = 0;
+                var lineChanges = 0;
 
                 for (int i = 0; i < calculatedPath.Count; i++)
                 {
@@ -138,12 +138,12 @@ namespace UGA.Assets.Scripts._Algo
                     {
                         if (calculatedPath[i].ParentRoute != calculatedPath[i + 1].ParentRoute)
                         {
-                            steps++;
+                            lineChanges++;
                         }
                     }
                 }
 
-                _algoViewModel.UpdateCalculationsData(steps, calculatedPath.Count);
+                _algoViewModel.UpdateCalculationsData(calculatedPath.Count - 1, lineChanges);
             }
             else
             {
