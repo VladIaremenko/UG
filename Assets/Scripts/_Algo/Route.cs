@@ -18,6 +18,11 @@ namespace UGA.Assets.Scripts._Algo
 
             for (int i = 0; i < _stations.Count; i++)
             {
+                _stations[i].ConnectedStations.Remove(_stations[i]);
+            }
+
+            for (int i = 0; i < _stations.Count; i++)
+            {
                 if (i > 0)
                 {
                     _stations[i].TryAddStation(_stations[i - 1]);
@@ -28,7 +33,7 @@ namespace UGA.Assets.Scripts._Algo
                     _stations[i].TryAddStation(_stations[i + 1]);
                 }
 
-                _stations[i].TryAddRoute(this);
+                _stations[i].ParentRoute = this;
 
                 _lineRenderer.SetPosition(i, _stations[i].transform.position);
             }

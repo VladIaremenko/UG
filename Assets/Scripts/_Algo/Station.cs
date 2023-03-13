@@ -9,11 +9,9 @@ namespace UGA.Assets.Scripts._Algo
     {
         [SerializeField] private LineRenderer _lineRenderer;
         [SerializeField] private List<Station> _connectedStations;
-        [SerializeField] private List<Route> _parentRoutes;
 
         public List<Station> ConnectedStations => _connectedStations;
-        public List<Route> ParentRoutes => _parentRoutes;
-
+        public Route ParentRoute { get; set; }
         public Station ParentStation { get; set; }
 
         internal void TryAddStation(Station station)
@@ -21,14 +19,6 @@ namespace UGA.Assets.Scripts._Algo
             if (!_connectedStations.Contains(station) && !station.IsUnityNull())
             {
                 _connectedStations.Add(station);
-            }
-        }
-
-        internal void TryAddRoute(Route route)
-        {
-            if (!_parentRoutes.Contains(route))
-            {
-                _parentRoutes.Add(route);
             }
         }
     }

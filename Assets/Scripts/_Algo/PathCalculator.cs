@@ -147,24 +147,22 @@ namespace UGA.Assets.Scripts._Algo
 
             for (int i = 0; i < calculatedPath.Count; i++)
             {
-                if (i + 2 >= calculatedPath.Count)
+                if (i + 1 >= calculatedPath.Count)
                 {
                     continue;
                 }
 
-                //Check 3 stations if they all are within same route
                 var current = calculatedPath[i];
                 var next = calculatedPath[i + 1];
-                var afterNext = calculatedPath[i + 2];
 
-                if(current.ParentRoutes
-                    .Intersect(next.ParentRoutes)
-                    .Intersect(afterNext.ParentRoutes)
-                    .ToList().Count == 0)
+                if(current.ParentRoute != next.ParentRoute)
                 {
                     changes++;
                 }
             }
+
+            //Debug.Log(changes);
+            Debug.Log(calculatedPath.Count);
         }
 
 
