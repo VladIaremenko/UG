@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace UGA.Assets.Scripts._Algo
@@ -69,6 +70,8 @@ namespace UGA.Assets.Scripts._Algo
                 stationsToCheck.Add(currentStation);
             }
 
+            currentStation.ConnectedStations.Sort((x,y)=>CompareStations(x,y,finishStation));
+
             foreach (var item in currentStation.ConnectedStations)
             {
                 if (visitedStations.Contains(item))
@@ -85,7 +88,7 @@ namespace UGA.Assets.Scripts._Algo
 
                 if (item == finishStation)
                 {
-                    CalculateReturnPath(item, calculatedPath);
+                    CalculateReturnPath(item, calculatedPath, 0);
 
                     item.ParentStation = null;
 
@@ -98,12 +101,22 @@ namespace UGA.Assets.Scripts._Algo
             visitedStations.Add(currentStation);
         }
 
-        private void CalculateReturnPath(Station station, List<Station> calculatedPath)
+        private int CompareStations(Station x, Station y, Station finishStation)
+        {
+            var xDistance = Vector3.Distance(x.transform.position, finishStation.transform.position);
+            var yDistance = Vector3.Distance(y.transform.position, finishStation.transform.position);
+
+            return (int)xDistance - (int)yDistance;
+        }
+
+        private void CalculateReturnPath(Station station, List<Station> calculatedPath, int routeChanges)
         {
             calculatedPath.Add(station);
 
             if (station.ParentStation == null)
             {
+                Debug.Log(routeChanges);
+
                 _lineRenderer.positionCount = calculatedPath.Count;
 
                 for (int i = 0; i < calculatedPath.Count; i++)
@@ -113,7 +126,12 @@ namespace UGA.Assets.Scripts._Algo
             }
             else
             {
-                CalculateReturnPath(station.ParentStation, calculatedPath);
+                if(station.ParentRoutes.Any(x => station.ParentRoutes.Contains(x)))
+                {
+                    routeChanges++;
+                }
+
+                CalculateReturnPath(station.ParentStation, calculatedPath, routeChanges);
             }
         }
 

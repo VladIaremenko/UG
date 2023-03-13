@@ -10,8 +10,10 @@ namespace UGA.Assets.Scripts._Algo
     {
         [SerializeField] private LineRenderer _lineRenderer;
         [SerializeField] private List<Station> _connectedStations;
+        [SerializeField] private List<Route> _parentRoutes;
 
         public List<Station> ConnectedStations => _connectedStations;
+        public List<Route> ParentRoutes => _parentRoutes;
 
         public Station ParentStation { get; set; }
 
