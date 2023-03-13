@@ -184,7 +184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
@@ -313,7 +313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
@@ -764,7 +764,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
@@ -906,7 +906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
@@ -1101,7 +1101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
@@ -1186,7 +1186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
@@ -1521,7 +1521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
@@ -1618,7 +1618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
@@ -1719,7 +1719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
@@ -1816,7 +1816,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
@@ -2051,7 +2051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
@@ -2152,7 +2152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
@@ -2237,7 +2237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
@@ -2338,7 +2338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
@@ -2435,7 +2435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
@@ -2808,7 +2808,6 @@ MonoBehaviour:
   - {fileID: 1901506273}
   - {fileID: 1549215095}
   - {fileID: 1870833209}
-  - {fileID: 591623089}
 --- !u!120 &1521547244
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -3158,7 +3157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
@@ -3279,7 +3278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
@@ -3482,7 +3481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
@@ -3579,7 +3578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
@@ -3689,7 +3688,12 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Positions: []
+  m_Positions:
+  - {x: -7.9, y: -17.5, z: 0}
+  - {x: 4.8, y: -19.5, z: 0}
+  - {x: 8.5, y: -10.9, z: 0}
+  - {x: 13.4, y: -2.4, z: 0}
+  - {x: 17.1, y: 6.8, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -4015,7 +4019,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
@@ -4206,7 +4210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
@@ -4656,7 +4660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981774906277792680, guid: 514abd2e8daabd84780f6cbddeebc4e0, type: 3}
       propertyPath: _connectedStations.Array.data[0]
