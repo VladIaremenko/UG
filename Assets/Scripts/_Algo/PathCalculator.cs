@@ -65,10 +65,11 @@ namespace UGA.Assets.Scripts._Algo
                         Debug.Log("NULL");
                         return;
                     }
+
+                    Debug.Log(nextRoundList.Count);
                 }
 
-                Debug.Log(nextRoundList.Count);
-                stationsToVisit = nextRoundList;
+                stationsToVisit = new List<Station>(nextRoundList);
             }
         }
 
@@ -95,7 +96,6 @@ namespace UGA.Assets.Scripts._Algo
 
                 if (item.ParentStation == null)
                 {
-                    item.transform.localScale = Vector3.one * 1.5f;
                     item.ParentStation = currentStation;
                 }
 
@@ -115,6 +115,8 @@ namespace UGA.Assets.Scripts._Algo
                 {
                     //Debug.Log(item.name);
                     nextRoundList.Add(item);
+
+                    Debug.Log(nextRoundList.Count);
                 }
             }
 
