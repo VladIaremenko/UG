@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -71,7 +70,7 @@ namespace UGA.Assets.Scripts._Algo
                 stationsToCheck.Add(currentStation);
             }
 
-            currentStation.ConnectedStations.Sort((x,y)=>CompareStations(x,y,finishStation));
+            currentStation.ConnectedStations.Sort((x, y) => CompareStations(x, y, finishStation));
 
             foreach (var item in currentStation.ConnectedStations)
             {
@@ -116,9 +115,9 @@ namespace UGA.Assets.Scripts._Algo
 
             if (station.ParentStation == null)
             {
-                Debug.Log(routeChanges);
-
                 _lineRenderer.positionCount = calculatedPath.Count;
+
+                CheckIntersections(calculatedPath);
 
                 for (int i = 0; i < calculatedPath.Count; i++)
                 {
@@ -127,30 +126,36 @@ namespace UGA.Assets.Scripts._Algo
             }
             else
             {
-                if(CompareStationsRoutes(station, station.ParentStation))
-                {
-                    routeChanges++;
-                }
-
                 CalculateReturnPath(station.ParentStation, calculatedPath, routeChanges);
             }
         }
 
-        private bool CompareStationsRoutes(Station station, Station parentStation)
+        private void CheckIntersections(List<Station> calculatedPath)
         {
-            foreach (var item in station.ParentRoutes)
+            var changes = 0;
+
+            for (int i = 0; i < calculatedPath.Count; i++)
             {
-                foreach (var item2 in parentStation.ParentRoutes)
+                if (i + 2 >= calculatedPath.Count)
                 {
-                    if(item == item2)
-                    {
-                        return false;
-                    }
+                    continue;
+                }
+
+                //Check 3 stations if they all are within same route
+                var current = calculatedPath[i];
+                var next = calculatedPath[i + 1];
+                var afterNext = calculatedPath[i + 2];
+
+                if(current.ParentRoutes
+                    .Intersect(next.ParentRoutes)
+                    .Intersect(afterNext.ParentRoutes)
+                    .ToList().Count == 0)
+                {
+                    changes++;
                 }
             }
-
-            return true;
         }
+
 
         private void Update()
         {
