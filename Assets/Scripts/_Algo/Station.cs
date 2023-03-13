@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 namespace UGA.Assets.Scripts._Algo
 {
@@ -22,6 +21,14 @@ namespace UGA.Assets.Scripts._Algo
             if (!_connectedStations.Contains(station) && !station.IsUnityNull())
             {
                 _connectedStations.Add(station);
+            }
+        }
+
+        internal void TryAddRoute(Route route)
+        {
+            if (!_parentRoutes.Contains(route))
+            {
+                _parentRoutes.Add(route);
             }
         }
     }

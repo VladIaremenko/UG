@@ -28,7 +28,7 @@ namespace UGA.Assets.Scripts._Algo
                     _stations[i].TryAddStation(_stations[i + 1]);
                 }
 
-                _stations[i].ParentRoutes.Add(this);
+                _stations[i].TryAddRoute(this);
 
                 _lineRenderer.SetPosition(i, _stations[i].transform.position);
             }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -126,7 +127,7 @@ namespace UGA.Assets.Scripts._Algo
             }
             else
             {
-                if(station.ParentRoutes.Any(x => station.ParentRoutes.Contains(x)))
+                if(CompareStationsRoutes(station, station.ParentStation))
                 {
                     routeChanges++;
                 }
@@ -135,6 +136,21 @@ namespace UGA.Assets.Scripts._Algo
             }
         }
 
+        private bool CompareStationsRoutes(Station station, Station parentStation)
+        {
+            foreach (var item in station.ParentRoutes)
+            {
+                foreach (var item2 in parentStation.ParentRoutes)
+                {
+                    if(item == item2)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
 
         private void Update()
         {
