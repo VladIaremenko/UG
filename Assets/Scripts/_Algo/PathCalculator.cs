@@ -47,8 +47,6 @@ namespace UGA.Assets.Scripts._Algo
 
                 foreach (var item in stationsToVisit)
                 {
-                    Debug.Log(item.name + "UPUPUP");
-
                     if (!visitedStations.Contains(item))
                     {
                         visitedStations.Add(item);
@@ -62,11 +60,8 @@ namespace UGA.Assets.Scripts._Algo
 
                     if (nextRoundList == null)
                     {
-                        Debug.Log("NULL");
                         return;
                     }
-
-                    Debug.Log(nextRoundList.Count);
                 }
 
                 stationsToVisit = new List<Station>(nextRoundList);
@@ -83,10 +78,6 @@ namespace UGA.Assets.Scripts._Algo
 
         private void CheckSingleStation(Station currentStation, Station startStation, Station finistStation, List<Station> visitedStations, List<Station> nextRoundList)
         {
-            Debug.Log("======================");
-
-            //Debug.Log(currentStation.name + " :::: ");
-
             foreach (var item in currentStation.ConnectedStations)
             {
                 if (visitedStations.Contains(item))
@@ -106,21 +97,17 @@ namespace UGA.Assets.Scripts._Algo
 
                 if (item == finistStation)
                 {
-                    Debug.Log("Success");
                     CalculateReturnPath(item, startStation, new List<Station>());
                     return;
                 }
 
                 if(!nextRoundList.Contains(item))
                 {
-                    //Debug.Log(item.name);
                     nextRoundList.Add(item);
 
                     Debug.Log(nextRoundList.Count);
                 }
             }
-
-            //Debug.Log(nextRoundList.Count);
         }
 
         [ContextMenu("Init")]
@@ -132,17 +119,12 @@ namespace UGA.Assets.Scripts._Algo
             }
         }
 
-
         private void CalculateReturnPath(Station station, Station startStation, List<Station> calculatedPath)
         {
-            Debug.Log(station.name);
-
             calculatedPath.Add(station);
 
             if (station.ParentStation == null)
             {
-                Debug.Log(calculatedPath.Count);
-
                 _lineRenderer.positionCount = calculatedPath.Count;
 
                 for (int i = 0; i < calculatedPath.Count; i++)
