@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41dae5bc7ba833949a52574c07e46638, type: 3}
-  m_Name: ShipModuleData 3
+  m_Script: {fileID: 11500000, guid: bc940e9986025e8478b376cf56a4de45, type: 3}
+  m_Name: ShipViewModel
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: 0ac55f9f886d827408c102bdf33c5ff7, type: 3}
