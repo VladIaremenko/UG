@@ -29,7 +29,6 @@ namespace UGA.Assets.Scripts._BattleShip
         private void HandleRefreshRequest()
         {
             _shipViewModel.AllModulesData.Value = _shipModules.Select((x, i) => new ShipModuleViewData(x.Sprite, i)).ToList();
-            Debug.Log("Refresh");
         }
     }
 }
