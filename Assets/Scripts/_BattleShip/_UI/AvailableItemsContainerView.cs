@@ -12,13 +12,18 @@ namespace UGA.Assets.Scripts._BattleShip._UI
         public void Init(ShipViewModel shipViewModel)
         {
             _shipViewModel = shipViewModel;
-            _shipViewModel.ModulesData.AddListener(RefreshView);
+            _shipViewModel.AllModulesData.AddListener(RefreshView);
             _shipViewModel.RefreshView();
+        }
+
+        public void HandleItemClick(int id)
+        {
+            _shipViewModel.HandleEquipItemClick(id);
         }
 
         private void OnDisable()
         {
-            _shipViewModel.ModulesData.RemoveListener(RefreshView);
+            _shipViewModel.AllModulesData.RemoveListener(RefreshView);
         }
 
         private void RefreshView(List<ShipModuleViewData> modulesList)

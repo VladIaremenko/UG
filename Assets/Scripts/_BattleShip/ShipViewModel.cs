@@ -8,24 +8,24 @@ namespace UGA.Assets.Scripts._BattleShip
     [CreateAssetMenu(fileName = "ShipViewModel", menuName = "SO/Ship/ShipViewModel", order = 1)]
     public class ShipViewModel : ScriptableObject
     {
-        public event Action HandleRefreshViewRequest = new(() => { });
+        public event Action RefreshViewRequestEvent = new(() => { });
+        public event Action<int> EquipItemClickEvent = new((x) => { });
 
-        public ObservableVariable<List<ShipModuleViewData>> ModulesData = new();
+
+        public ObservableVariable<List<ShipModuleViewData>> AllModulesData = new();
+        public ObservableVariable<List<ShipModuleViewData>> EquipedWeaponsData = new();
+        public ObservableVariable<List<ShipModuleViewData>> EquipedModulessData = new();
 
         public void RefreshView()
         {
-            HandleRefreshViewRequest.Invoke();
+            RefreshViewRequestEvent.Invoke();
         }
-    }
 
-    public class ShipModuleViewData
-    {
-        public Sprite Sprite;
-
-        public ShipModuleViewData(Sprite sprige)
+        public void HandleEquipItemClick(int id)
         {
-            Sprite = sprige;
+            EquipItemClickEvent.Invoke(id);
         }
+
     }
 }
 

@@ -15,20 +15,20 @@ namespace UGA.Assets.Scripts._BattleShip
         public void Init(ShipViewModel shipViewModel)
         {
             _shipViewModel = shipViewModel;
-            _shipViewModel.HandleRefreshViewRequest += HandleRefreshRequest;
+            _shipViewModel.RefreshViewRequestEvent += HandleRefreshRequest;
         }
 
         private void OnDisable()
         {
             if (_shipViewModel != null)
             {
-                _shipViewModel.HandleRefreshViewRequest -= HandleRefreshRequest;
+                _shipViewModel.RefreshViewRequestEvent -= HandleRefreshRequest;
             }
         }
 
         private void HandleRefreshRequest()
         {
-            _shipViewModel.ModulesData.Value = _shipModules.Select((x) => new ShipModuleViewData(x.Sprite)).ToList();
+            _shipViewModel.AllModulesData.Value = _shipModules.Select((x, i) => new ShipModuleViewData(x.Sprite, i)).ToList();
             Debug.Log("Refresh");
         }
     }
