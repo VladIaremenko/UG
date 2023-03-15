@@ -14,6 +14,8 @@ namespace UGA.Assets.Scripts._BattleShip
         public void Init(ShipViewModel shipViewModel)
         {
             _shipViewModel = shipViewModel;
+
+            UpdateStats(new List<ShipModuleData>(), new List<ShipModuleData>());
         }
 
         public void UpdateStats(List<ShipModuleData> equipedWeapons, List<ShipModuleData> equipedUpgrades)
