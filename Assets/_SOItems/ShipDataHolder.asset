@@ -15,5 +15,6 @@ MonoBehaviour:
   _shipModules:
   - {fileID: 11400000, guid: 7d9376ac02703f54c93efef7a9e76602, type: 2}
   - {fileID: 11400000, guid: 3266b7547b0fc414291f6678c2dea9da, type: 2}
+  - {fileID: 11400000, guid: 5ce9f4442f7ed9b4ea5644dcb488fbe9, type: 2}
   - {fileID: 11400000, guid: 3b2303d2f1e23d9458685d5db39cedf4, type: 2}
   - {fileID: 11400000, guid: 2fc8f78e008b50c498776596c94ae969, type: 2}

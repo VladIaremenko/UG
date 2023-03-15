@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: ShipModuleData 2
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 7fd3cda14282bb7429b8eeb6c121e5bb, type: 3}
+  ModuleType: 1

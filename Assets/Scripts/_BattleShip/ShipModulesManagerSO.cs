@@ -14,9 +14,10 @@ namespace UGA.Assets.Scripts._BattleShip
         private List<ShipModuleData> _equipedWeapons = new List<ShipModuleData>();
         private List<ShipModuleData> _equipedUpgrades = new List<ShipModuleData>();
 
-        public void Init(ShipViewModel shipViewModel)
+        public void Init(ShipViewModel shipViewModel, ShipDataHolderSO shipDataHolderSO)
         {
             _shipViewModel = shipViewModel;
+            _shipDataHolderSO = shipDataHolderSO;
             _shipViewModel.EquipItemClickEvent += HandleEquipItemClick;
         }
 
@@ -30,6 +31,8 @@ namespace UGA.Assets.Scripts._BattleShip
 
         private void HandleEquipItemClick(int id)
         {
+            Debug.Log(id);
+
             var module = _shipDataHolderSO.Modules[id];
 
             switch (module.ModuleType)
@@ -49,12 +52,16 @@ namespace UGA.Assets.Scripts._BattleShip
 
         private List<ShipModuleViewData> GetViewDataList(List<ShipModuleData> list)
         {
-            return list.Select((x, i) => new ShipModuleViewData(x.Sprite, i)).ToList();
+            return list.Select((x, i) => new ShipModuleViewData(x.Sprite, x.ID)).ToList();
         }
 
         private void HandleModule(ShipModuleData module, List<ShipModuleData> list)
         {
-            if (!list.Contains(module))
+            if (list.Contains(module))
+            {
+                list.Remove(module);
+            }
+            else
             {
                 list.Add(module);
             }

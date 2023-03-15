@@ -1,25 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using UGA.Assets.Scripts._BattleShip._Misc;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace UGA.Assets.Scripts._BattleShip._UI
 {
-    public class AvailableItemsContainerView : MonoBehaviour, IHandleItemClick
+    public class EquipedUpgradesContainerView : MonoBehaviour
     {
         private ShipViewModel _shipViewModel;
         [SerializeField] private List<ModuleButtonView> _buttonViews;
 
-        public void Init(ShipViewModel shipViewModel)
-        {
-            _shipViewModel = shipViewModel;
-            _shipViewModel.AllModulesData.AddListener(RefreshView);
-            _shipViewModel.RefreshView();
-        }
-
         public void HandleItemClick(int id)
         {
-            _shipViewModel.HandleEquipItemClick(id);
+            Debug.Log(id);
+        }
+
+        public void Init(ShipViewModel shipViewModel)
+        {
+            HideAllItems();
+            _shipViewModel = shipViewModel;
+            _shipViewModel.EquipedWeaponsData.AddListener(RefreshView);
         }
 
         private void OnDisable()
@@ -29,15 +27,20 @@ namespace UGA.Assets.Scripts._BattleShip._UI
 
         private void RefreshView(List<ShipModuleViewData> modulesList)
         {
-            for (int i = 0; i < _buttonViews.Count; i++)
-            {
-                _buttonViews[i].gameObject.SetActive(false);
-            }
+            HideAllItems();
 
             for (int i = 0; i < modulesList.Count; i++)
             {
                 _buttonViews[i].UpdateView(modulesList[i]);
                 _buttonViews[i].gameObject.SetActive(true);
+            }
+        }
+
+        private void HideAllItems()
+        {
+            for (int i = 0; i < _buttonViews.Count; i++)
+            {
+                _buttonViews[i].gameObject.SetActive(false);
             }
         }
     }

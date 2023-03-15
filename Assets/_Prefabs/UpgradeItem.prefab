@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1195025286099641481}
   - component: {fileID: 1195025286099641483}
   - component: {fileID: 1195025286099641482}
-  - component: {fileID: 345605686458092423}
   - component: {fileID: -8156141269438918619}
+  - component: {fileID: 9072981617590501798}
   m_Layer: 5
   m_Name: UpgradeItem
   m_TagString: Untagged
@@ -80,20 +80,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &345605686458092423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1195025286099641480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46d764f925a367d4282781ae38016397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _image: {fileID: 1195025287443036097}
-  _button: {fileID: -8156141269438918619}
 --- !u!114 &-8156141269438918619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +124,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9072981617590501798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195025286099641480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3792bdf01bf3774bb4107642e26bc1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _image: {fileID: 1195025287443036097}
+  _button: {fileID: -8156141269438918619}
 --- !u!1 &1195025286124868880
 GameObject:
   m_ObjectHideFlags: 0
