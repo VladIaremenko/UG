@@ -29,6 +29,15 @@ namespace UGA.Assets.Scripts._BattleShip
             EquipItemClickEvent.Invoke(id);
         }
 
+        public void StartAttacking()
+        {
+            StartAttackingEvent.Invoke();
+        }
+
+        public void StopAttacking()
+        {
+            StopAttackingEvent.Invoke();
+        }
     }
 }
 

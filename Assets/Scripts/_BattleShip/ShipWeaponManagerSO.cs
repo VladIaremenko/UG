@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -47,8 +46,11 @@ namespace UGA.Assets.Scripts._BattleShip
 
         private void OnDisable()
         {
-            _shipViewModel.StartAttackingEvent -= StartAttacking;
-            _shipViewModel.StopAttackingEvent -= StopAttacking;
+            if (_shipViewModel != null)
+            {
+                _shipViewModel.StartAttackingEvent -= StartAttacking;
+                _shipViewModel.StopAttackingEvent -= StopAttacking;
+            }
         }
 
         private IEnumerator AttackCoroutine(float damage, float reloadTime)
