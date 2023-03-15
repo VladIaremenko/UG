@@ -8,8 +8,8 @@ namespace UGA.Assets.Scripts._BattleShip
     {
         public int Shield;
         public int HPBonus;
-        public int ReloadTimeChangeBonus;
-        public int ShieldRechargeBonus;
+        public int ReloadTimeBonus;
+        public int ShieldRechargeRateBonus;
 
         public override string GetDescriptionText()
         {
@@ -25,14 +25,14 @@ namespace UGA.Assets.Scripts._BattleShip
                 str.Append($"HPBonus: {HPBonus}\n");
             }
 
-            if (ReloadTimeChangeBonus != 0)
+            if (ReloadTimeBonus != 0)
             {
-                str.Append($"Reload: {ReloadTimeChangeBonus}%\n");
+                str.Append($"Reload: {ReloadTimeBonus}%\n");
             }
 
-            if (ShieldRechargeBonus != 0)
+            if (ShieldRechargeRateBonus != 0)
             {
-                str.Append($"ShieldRecharge: {ShieldRechargeBonus}%\n");
+                str.Append($"ShieldRecharge: {ShieldRechargeRateBonus}%\n");
             }
 
             return str.ToString();

@@ -10,6 +10,7 @@ namespace UGA.Assets.Scripts._BattleShip
     {
         private ShipViewModel _shipViewModel;
         private ShipDataHolderSO _shipDataHolderSO;
+        private ShipStatsManagerSO _shipStatsManagerSO;
 
         [SerializeField] private int _maxWeaponsCount;
         [SerializeField] private int _maxUpgradesCount;
@@ -46,6 +47,8 @@ namespace UGA.Assets.Scripts._BattleShip
                 HandleModuleList(module, _equipedWeapons, _maxWeaponsCount);
                 _shipViewModel.EquipedWeaponsData.Value = GetViewDataList(_equipedWeapons);
             }
+
+            _shipStatsManagerSO.UpdateModules(_equipedWeapons, _equipedUpgrades);
         }
 
         private List<ShipModuleViewData> GetViewDataList(List<ShipModuleData> list)
