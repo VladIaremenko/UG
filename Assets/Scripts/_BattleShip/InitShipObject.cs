@@ -8,6 +8,7 @@ namespace UGA.Assets.Scripts._BattleShip
         [SerializeField] private ShipViewModel _shipViewModel;
         [SerializeField] private ShipDataHolderSO _shipDataHolderSO;
         [SerializeField] private ShipModulesManagerSO _shipModulesManagerSO;
+        [SerializeField] private ShipStatsManagerSO _shipStatsManager;
 
         [SerializeField] private AvailableItemsContainerView _availableItemsContainerView;
         [SerializeField] private EquipedWeaponsContainerView _equipedWeaponsContainerView;
@@ -21,9 +22,10 @@ namespace UGA.Assets.Scripts._BattleShip
 
             _shipDataHolderSO.Init(_shipViewModel);
             _availableItemsContainerView.Init(_shipViewModel);
-            _shipModulesManagerSO.Init(_shipViewModel, _shipDataHolderSO);
+            _shipModulesManagerSO.Init(_shipViewModel, _shipDataHolderSO, _shipStatsManager);
             _equipedWeaponsContainerView.Init(_shipViewModel);
             _equipedUpgradesContainerView.Init(_shipViewModel);
+            _shipStatsManager.Init(_shipViewModel);
         }
     }
 }

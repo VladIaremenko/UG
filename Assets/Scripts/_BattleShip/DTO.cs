@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace UGA.Assets.Scripts._BattleShip
@@ -12,7 +13,7 @@ namespace UGA.Assets.Scripts._BattleShip
         public ShipModuleViewData(Sprite sprige, string description, int id)
         {
             Sprite = sprige;
-            this.ID = id;
+            ID = id;
             Description = description;
         }
     }
@@ -20,18 +21,33 @@ namespace UGA.Assets.Scripts._BattleShip
     [Serializable]
     public class ShipState
     {
-        public float StartHP;
-        public float StartShield;
+        public float HP;
+        public float Shield;
         public float ShieldRechargeTime;
         public float ShieldRechargeRate;
 
-        public ShipState(float startHP, float startShield, float shieldRechargeTime, float shieldRechargeRate)
+        public ShipState(ShipState state)
         {
-            StartHP = startHP;
-            StartShield = startShield;
-            ShieldRechargeTime = shieldRechargeTime;
-            ShieldRechargeRate = shieldRechargeRate;
+            HP = state.HP;
+            Shield = state.Shield;
+            ShieldRechargeTime = state.ShieldRechargeTime;
+            ShieldRechargeRate = state.ShieldRechargeRate;
         }
+    }
+
+    public class ShipStateViewData
+    {
+        public float HP;
+        public float Shield;
+        public float ShieldRechargeTime;
+        public float ShieldRechargeRate;
+        public List<ShipWeaponViewData> WeaponsData;
+    }
+
+    public class ShipWeaponViewData
+    {
+        public float Damage;
+        public float ReloadTime;
     }
 
     public enum ModuleType

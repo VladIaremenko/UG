@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace UGA.Assets.Scripts._BattleShip
@@ -8,14 +7,41 @@ namespace UGA.Assets.Scripts._BattleShip
     public class ShipStatsManagerSO : ScriptableObject
     {
         [SerializeField] private ShipState _startState;
+
+        private ShipViewModel _shipViewModel;
         private ShipState _currentState;
 
-        public void UpdateModules(List<ShipModuleData> equipedWeapons, List<ShipModuleData> equipedUpgrades)
+        public void Init(ShipViewModel shipViewModel)
         {
+            _shipViewModel = shipViewModel;
+        }
+
+        public void UpdateStats(List<ShipModuleData> equipedWeapons, List<ShipModuleData> equipedUpgrades)
+        {
+            _currentState = new ShipState(_startState);
+
             foreach (var item in equipedUpgrades)
             {
-
+                var upgrade = item as ShipUpgradeModule;
+                _currentState.HP += upgrade.HPBonus;
+                _currentState.Shield += upgrade.Shield;
             }
+
+            var stateViewData = new ShipStateViewData(
+                _currentState.Shield, 
+                _currentState.HP,
+                _currentState.ShieldRechargeTime,
+                _currentState.ShieldRechargeRate,
+                new List<ShipWeaponViewData>()
+                );
+
+            foreach (var item in equipedUpgrades)
+            {
+                var weapon = item as ShipWeaponModule;
+                stateViewData.WeaponsData.Add(new ShipWeaponViewData(weapon.Damage, weapon.ReloadTime));
+            }
+
+            _shipViewModel.CurrentShipState.Value = stateViewData;
         }
     }
 }

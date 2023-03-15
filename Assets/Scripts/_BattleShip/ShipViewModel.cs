@@ -14,6 +14,8 @@ namespace UGA.Assets.Scripts._BattleShip
         public ObservableVariable<List<ShipModuleViewData>> AllModulesData = new();
         public ObservableVariable<List<ShipModuleViewData>> EquipedWeaponsData = new();
         public ObservableVariable<List<ShipModuleViewData>> EquipeUpgradesData = new();
+        public ObservableVariable<ShipStateViewData> CurrentShipState = new();
+
 
         public void RefreshView()
         {

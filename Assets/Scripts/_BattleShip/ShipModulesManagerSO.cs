@@ -18,11 +18,12 @@ namespace UGA.Assets.Scripts._BattleShip
         private List<ShipModuleData> _equipedWeapons = new List<ShipModuleData>();
         private List<ShipModuleData> _equipedUpgrades = new List<ShipModuleData>();
 
-        public void Init(ShipViewModel shipViewModel, ShipDataHolderSO shipDataHolderSO)
+        public void Init(ShipViewModel shipViewModel, ShipDataHolderSO shipDataHolderSO, ShipStatsManagerSO shipStatsManagerSO)
         {
             _shipViewModel = shipViewModel;
             _shipDataHolderSO = shipDataHolderSO;
             _shipViewModel.EquipItemClickEvent += HandleEquipItemClick;
+            _shipStatsManagerSO = shipStatsManagerSO;
         }
 
         public void OnDisable()
@@ -48,7 +49,7 @@ namespace UGA.Assets.Scripts._BattleShip
                 _shipViewModel.EquipedWeaponsData.Value = GetViewDataList(_equipedWeapons);
             }
 
-            _shipStatsManagerSO.UpdateModules(_equipedWeapons, _equipedUpgrades);
+            _shipStatsManagerSO.UpdateStats(_equipedWeapons, _equipedUpgrades);
         }
 
         private List<ShipModuleViewData> GetViewDataList(List<ShipModuleData> list)
