@@ -6,10 +6,10 @@ namespace UGA.Assets.Scripts._BattleShip
     [CreateAssetMenu(fileName = "ShipUpgradeModule", menuName = "SO/Ship/Module/ShipUpgradeModule", order = 1)]
     public class ShipUpgradeModule : ShipModuleData
     {
-        public int Shield;
-        public int HPBonus;
-        public int ReloadTimeBonus;
-        public int ShieldRechargeRateBonus;
+        public float Shield;
+        public float HPBonus;
+        public float ReloadTimeBonus;
+        public float ShieldRechargeRateBonus;
 
         public override string GetDescriptionText()
         {

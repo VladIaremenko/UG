@@ -42,12 +42,27 @@ namespace UGA.Assets.Scripts._BattleShip
         public float ShieldRechargeTime;
         public float ShieldRechargeRate;
         public List<ShipWeaponViewData> WeaponsData;
+
+        public ShipStateViewData(float hP, float shield, float shieldRechargeTime, float shieldRechargeRate, List<ShipWeaponViewData> weaponsData)
+        {
+            HP = hP;
+            Shield = shield;
+            ShieldRechargeTime = shieldRechargeTime;
+            ShieldRechargeRate = shieldRechargeRate;
+            WeaponsData = weaponsData;
+        }
     }
 
     public class ShipWeaponViewData
     {
         public float Damage;
         public float ReloadTime;
+
+        public ShipWeaponViewData(float damage, float reloadTime)
+        {
+            Damage = damage;
+            ReloadTime = reloadTime;
+        }
     }
 
     public enum ModuleType

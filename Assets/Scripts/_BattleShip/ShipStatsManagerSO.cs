@@ -25,6 +25,9 @@ namespace UGA.Assets.Scripts._BattleShip
                 var upgrade = item as ShipUpgradeModule;
                 _currentState.HP += upgrade.HPBonus;
                 _currentState.Shield += upgrade.Shield;
+
+                _currentState.ShieldRechargeRate *= 1 + upgrade.ShieldRechargeRateBonus / 100;
+                _currentState.ShieldRechargeTime *= 1 + upgrade.ReloadTimeBonus / 100;
             }
 
             var stateViewData = new ShipStateViewData(
@@ -35,7 +38,7 @@ namespace UGA.Assets.Scripts._BattleShip
                 new List<ShipWeaponViewData>()
                 );
 
-            foreach (var item in equipedUpgrades)
+            foreach (var item in equipedWeapons)
             {
                 var weapon = item as ShipWeaponModule;
                 stateViewData.WeaponsData.Add(new ShipWeaponViewData(weapon.Damage, weapon.ReloadTime));

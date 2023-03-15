@@ -13,6 +13,7 @@ namespace UGA.Assets.Scripts._BattleShip
         [SerializeField] private AvailableItemsContainerView _availableItemsContainerView;
         [SerializeField] private EquipedWeaponsContainerView _equipedWeaponsContainerView;
         [SerializeField] private EquipedUpgradesContainerView _equipedUpgradesContainerView;
+        [SerializeField] private ShipStateView _shipStateView;
 
         private void Awake()
         {
@@ -26,6 +27,7 @@ namespace UGA.Assets.Scripts._BattleShip
             _equipedWeaponsContainerView.Init(_shipViewModel);
             _equipedUpgradesContainerView.Init(_shipViewModel);
             _shipStatsManager.Init(_shipViewModel);
+            _shipStateView.Init(_shipViewModel);
         }
     }
 }
