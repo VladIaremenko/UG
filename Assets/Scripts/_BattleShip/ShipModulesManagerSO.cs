@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -11,6 +10,7 @@ namespace UGA.Assets.Scripts._BattleShip
         private ShipViewModel _shipViewModel;
         private ShipDataHolderSO _shipDataHolderSO;
         private ShipStatsManagerSO _shipStatsManagerSO;
+        private ShipWeaponManagerSO _shipWeaponManagerSO;
 
         [SerializeField] private int _maxWeaponsCount;
         [SerializeField] private int _maxUpgradesCount;
@@ -18,12 +18,13 @@ namespace UGA.Assets.Scripts._BattleShip
         private List<ShipModuleData> _equipedWeapons = new List<ShipModuleData>();
         private List<ShipModuleData> _equipedUpgrades = new List<ShipModuleData>();
 
-        public void Init(ShipViewModel shipViewModel, ShipDataHolderSO shipDataHolderSO, ShipStatsManagerSO shipStatsManagerSO)
+        public void Init(ShipViewModel shipViewModel, ShipDataHolderSO shipDataHolderSO, ShipStatsManagerSO shipStatsManagerSO, ShipWeaponManagerSO shipWeaponManagerSO)
         {
             _shipViewModel = shipViewModel;
             _shipDataHolderSO = shipDataHolderSO;
             _shipViewModel.EquipItemClickEvent += HandleEquipItemClick;
             _shipStatsManagerSO = shipStatsManagerSO;
+            _shipWeaponManagerSO = shipWeaponManagerSO;
         }
 
         public void OnDisable()
@@ -38,7 +39,7 @@ namespace UGA.Assets.Scripts._BattleShip
         {
             var module = _shipDataHolderSO.Modules[id];
 
-            if(module.GetType() == typeof(ShipUpgradeModule))
+            if (module.GetType() == typeof(ShipUpgradeModule))
             {
                 HandleModuleList(module, _equipedUpgrades, _maxUpgradesCount);
                 _shipViewModel.EquipeUpgradesData.Value = GetViewDataList(_equipedUpgrades);
@@ -50,11 +51,12 @@ namespace UGA.Assets.Scripts._BattleShip
             }
 
             _shipStatsManagerSO.UpdateStats(_equipedWeapons, _equipedUpgrades);
+            _shipWeaponManagerSO.UpdateWeapons(_equipedWeapons);
         }
 
         private List<ShipModuleViewData> GetViewDataList(List<ShipModuleData> list)
         {
-            return list.Select((x, i) => new ShipModuleViewData(x.Sprite, x.GetDescriptionText(),x.ID)).ToList();
+            return list.Select((x, i) => new ShipModuleViewData(x.Sprite, x.GetDescriptionText(), x.ID)).ToList();
         }
 
         private void HandleModuleList(ShipModuleData module, List<ShipModuleData> list, int maxAmount)
@@ -65,7 +67,7 @@ namespace UGA.Assets.Scripts._BattleShip
             }
             else
             {
-                if(list.Count < maxAmount)
+                if (list.Count < maxAmount)
                 {
                     list.Add(module);
                 }
