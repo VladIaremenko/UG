@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using UGA.Assets.Scripts._BattleShip._Misc;
 using UnityEngine;
 
 namespace UGA.Assets.Scripts._BattleShip._UI
 {
-    public class EquipedUpgradesContainerView : MonoBehaviour
+    public class EquipedUpgradesContainerView : MonoBehaviour, IHandleItemClick
     {
         private ShipViewModel _shipViewModel;
         [SerializeField] private List<ModuleButtonView> _buttonViews;
