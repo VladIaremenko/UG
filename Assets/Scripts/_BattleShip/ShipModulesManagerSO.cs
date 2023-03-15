@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace UGA.Assets.Scripts._BattleShip
@@ -8,9 +9,10 @@ namespace UGA.Assets.Scripts._BattleShip
     public class ShipModulesManagerSO : ScriptableObject
     {
         private ShipViewModel _shipViewModel;
+        private ShipDataHolderSO _shipDataHolderSO;
 
         private List<ShipModuleData> _equipedWeapons = new List<ShipModuleData>();
-        private List<ShipModuleData> _equipedModules = new List<ShipModuleData>();
+        private List<ShipModuleData> _equipedUpgrades = new List<ShipModuleData>();
 
         public void Init(ShipViewModel shipViewModel)
         {
@@ -28,7 +30,34 @@ namespace UGA.Assets.Scripts._BattleShip
 
         private void HandleEquipItemClick(int id)
         {
-            Debug.Log(id);
+            var module = _shipDataHolderSO.Modules[id];
+
+            switch (module.ModuleType)
+            {
+                case ModuleType.Upgrade:
+                    HandleModule(module, _equipedUpgrades);
+                    _shipViewModel.EquipeUpgradesData.Value = GetViewDataList(_equipedUpgrades);
+                    break;
+                case ModuleType.Weapon:
+                    HandleModule(module, _equipedWeapons);
+                    _shipViewModel.EquipedWeaponsData.Value = GetViewDataList(_equipedWeapons);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private List<ShipModuleViewData> GetViewDataList(List<ShipModuleData> list)
+        {
+            return list.Select((x, i) => new ShipModuleViewData(x.Sprite, i)).ToList();
+        }
+
+        private void HandleModule(ShipModuleData module, List<ShipModuleData> list)
+        {
+            if (!list.Contains(module))
+            {
+                list.Add(module);
+            }
         }
     }
 }

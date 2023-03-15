@@ -11,10 +11,9 @@ namespace UGA.Assets.Scripts._BattleShip
         public event Action RefreshViewRequestEvent = new(() => { });
         public event Action<int> EquipItemClickEvent = new((x) => { });
 
-
         public ObservableVariable<List<ShipModuleViewData>> AllModulesData = new();
         public ObservableVariable<List<ShipModuleViewData>> EquipedWeaponsData = new();
-        public ObservableVariable<List<ShipModuleViewData>> EquipedModulessData = new();
+        public ObservableVariable<List<ShipModuleViewData>> EquipeUpgradesData = new();
 
         public void RefreshView()
         {

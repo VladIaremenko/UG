@@ -13,6 +13,12 @@ namespace UGA.Assets.Scripts._BattleShip
             this.ID = id;
         }
     }
+
+    public enum ModuleType
+    {
+        Upgrade,
+        Weapon
+    }
 }
 
 
