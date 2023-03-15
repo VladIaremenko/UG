@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UGA.Assets.Scripts._BattleShip._Misc;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,7 @@ namespace UGA.Assets.Scripts._BattleShip._UI
     public class ModuleButtonView : MonoBehaviour
     {
         [SerializeField] private Image _image;
+        [SerializeField] private TextMeshProUGUI _text;
         [SerializeField] private Button _button;
 
         private IHandleItemClick _container;
@@ -28,6 +30,7 @@ namespace UGA.Assets.Scripts._BattleShip._UI
         {
             _image.sprite = shipModuleViewData.Sprite;
             _id = shipModuleViewData.ID;
+            _text.text = shipModuleViewData.Description;
         }
     }
 }

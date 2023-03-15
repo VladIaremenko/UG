@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace UGA.Assets.Scripts._BattleShip
 {
@@ -10,6 +11,11 @@ namespace UGA.Assets.Scripts._BattleShip
 
         [HideInInspector]
         public int ID;
+
+        public string GetDescriptionText()
+        {
+            return "TEXT 2";
+        }
     }
 }
 

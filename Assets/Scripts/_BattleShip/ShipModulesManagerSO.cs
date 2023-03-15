@@ -53,7 +53,7 @@ namespace UGA.Assets.Scripts._BattleShip
 
         private List<ShipModuleViewData> GetViewDataList(List<ShipModuleData> list)
         {
-            return list.Select((x, i) => new ShipModuleViewData(x.Sprite, x.ID)).ToList();
+            return list.Select((x, i) => new ShipModuleViewData(x.Sprite, x.GetDescriptionText(),x.ID)).ToList();
         }
 
         private void HandleModuleList(ShipModuleData module, List<ShipModuleData> list, int maxAmount)

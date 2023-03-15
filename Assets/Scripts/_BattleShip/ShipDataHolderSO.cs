@@ -31,7 +31,7 @@ namespace UGA.Assets.Scripts._BattleShip
             _shipViewModel.AllModulesData.Value = _shipModules.Select((x, i) => {
 
                 x.ID = i;
-                return new ShipModuleViewData(x.Sprite, x.ID); 
+                return new ShipModuleViewData(x.Sprite, x.GetDescriptionText(),x.ID); 
 
             }).ToList();
         }
