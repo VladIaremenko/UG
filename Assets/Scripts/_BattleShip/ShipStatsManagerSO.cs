@@ -30,6 +30,13 @@ namespace UGA.Assets.Scripts._BattleShip
 
                 _currentState.ShieldRechargeRate *= 1 + upgrade.ShieldRechargeRateBonus / 100;
                 _currentState.ShieldRechargeTime *= 1 + upgrade.ReloadTimeBonus / 100;
+                _currentState.Weapons = new();
+            }
+
+            foreach (var item in equipedWeapons)
+            {
+                var weapon = item as ShipWeaponModule;
+                _currentState.Weapons.Add(weapon);
             }
 
             var stateViewData = new ShipStateViewData(

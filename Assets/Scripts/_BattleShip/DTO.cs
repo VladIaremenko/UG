@@ -25,6 +25,7 @@ namespace UGA.Assets.Scripts._BattleShip
         public float Shield;
         public float ShieldRechargeTime;
         public float ShieldRechargeRate;
+        public List<ShipWeaponModule> Weapons;
 
         public ShipState(ShipState state)
         {
