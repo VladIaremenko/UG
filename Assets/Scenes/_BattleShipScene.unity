@@ -2759,6 +2759,8 @@ GameObject:
   - component: {fileID: 1130915719}
   - component: {fileID: 1130915718}
   - component: {fileID: 1130915717}
+  - component: {fileID: 1130915721}
+  - component: {fileID: 1130915722}
   m_Layer: 5
   m_Name: ShipPanel
   m_TagString: Untagged
@@ -2821,10 +2823,13 @@ MonoBehaviour:
   _shipModulesManagerSO: {fileID: 11400000, guid: a9de3879d9ba3c34393294b5376f7abe, type: 2}
   _shipStatsManager: {fileID: 11400000, guid: f0a06534cf3bc4c41814139be704a41e, type: 2}
   _shipWeaponManagerSO: {fileID: 11400000, guid: dbc5728f32b4df14485dd536acd24ae4, type: 2}
+  _battleManagerSO: {fileID: 11400000, guid: 8b86fe73cacf1c643a4355d8edabb0be, type: 2}
   _availableItemsContainerView: {fileID: 686108903}
   _equipedWeaponsContainerView: {fileID: 1933163237}
   _equipedUpgradesContainerView: {fileID: 1351989976}
   _shipStateView: {fileID: 1130915717}
+  _shipGameStateListener: {fileID: 1130915721}
+  _shipAttackInteface: {fileID: 1130915722}
 --- !u!114 &1130915719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2863,6 +2868,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1130915715}
   m_CullTransparentMesh: 1
+--- !u!114 &1130915721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130915715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a97ce790235f7345b1545fcec1b9db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameStateViewModel: {fileID: 11400000, guid: 30f0d6fd4b13e4b4f93c431f825e4cc2, type: 2}
+--- !u!114 &1130915722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130915715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f67a672d280d2428e58e79168577b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1165614831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3214,6 +3244,7 @@ GameObject:
   - component: {fileID: 1271940637}
   - component: {fileID: 1271940636}
   - component: {fileID: 1271940635}
+  - component: {fileID: 1271940638}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -3300,6 +3331,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271940633}
   m_CullTransparentMesh: 1
+--- !u!114 &1271940638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271940633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1271940636}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 30f0d6fd4b13e4b4f93c431f825e4cc2, type: 2}
+        m_TargetAssemblyTypeName: UGA.Assets.Scripts._BattleShip._Game.GameStateViewModel,
+          Assembly-CSharp
+        m_MethodName: StartBattle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1275408114
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4852,6 +4940,8 @@ GameObject:
   - component: {fileID: 1614881527}
   - component: {fileID: 1614881529}
   - component: {fileID: 1614881530}
+  - component: {fileID: 1614881531}
+  - component: {fileID: 1614881532}
   m_Layer: 5
   m_Name: ShipPanel
   m_TagString: Untagged
@@ -4939,10 +5029,13 @@ MonoBehaviour:
   _shipModulesManagerSO: {fileID: 11400000, guid: 2a4626ab3f8a88f41a31b21a931569c4, type: 2}
   _shipStatsManager: {fileID: 11400000, guid: 96f11d49d243de04db714e683c5b4901, type: 2}
   _shipWeaponManagerSO: {fileID: 11400000, guid: dbc5728f32b4df14485dd536acd24ae4, type: 2}
+  _battleManagerSO: {fileID: 11400000, guid: 8b86fe73cacf1c643a4355d8edabb0be, type: 2}
   _availableItemsContainerView: {fileID: 819347416}
   _equipedWeaponsContainerView: {fileID: 1654326827}
   _equipedUpgradesContainerView: {fileID: 2087959255}
   _shipStateView: {fileID: 1614881530}
+  _shipGameStateListener: {fileID: 1614881531}
+  _shipAttackInteface: {fileID: 1614881532}
 --- !u!114 &1614881530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4956,6 +5049,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stateText: {fileID: 908918830}
+--- !u!114 &1614881531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614881525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a97ce790235f7345b1545fcec1b9db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameStateViewModel: {fileID: 11400000, guid: 30f0d6fd4b13e4b4f93c431f825e4cc2, type: 2}
+--- !u!114 &1614881532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614881525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f67a672d280d2428e58e79168577b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1620361942
 PrefabInstance:
   m_ObjectHideFlags: 0

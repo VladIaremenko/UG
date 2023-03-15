@@ -10,6 +10,7 @@ namespace UGA.Assets.Scripts._BattleShip
     {
         public event Action RefreshViewRequestEvent = new(() => { });
         public event Action<int> EquipItemClickEvent = new((x) => { });
+        public event Action<float> TakeDamageEvent = new((x) => { });
 
         public event Action StartAttackingEvent = new(() => { });
         public event Action StopAttackingEvent = new(() => { });
@@ -37,6 +38,11 @@ namespace UGA.Assets.Scripts._BattleShip
         public void StopAttacking()
         {
             StopAttackingEvent.Invoke();
+        }
+
+        public void HandleTakeDamage(float damage)
+        {
+            TakeDamageEvent.Invoke(damage);
         }
     }
 }

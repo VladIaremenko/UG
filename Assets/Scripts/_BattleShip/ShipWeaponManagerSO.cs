@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UGA.Assets.Scripts._BattleShip._Game;
 using UnityEngine;
 
 namespace UGA.Assets.Scripts._BattleShip
@@ -8,12 +9,20 @@ namespace UGA.Assets.Scripts._BattleShip
     public class ShipWeaponManagerSO : ScriptableObject
     {
         private ShipViewModel _shipViewModel;
-        private List<ShipModuleData> _equipedWeapons = new List<ShipModuleData>();
         private MonoBehaviour _mono;
-        private List<Coroutine> _coroutines;
+        private BattleManagerSO _battleManagerSO;
+        private List<ShipModuleData> _equipedWeapons = new List<ShipModuleData>();
+        private List<Coroutine> _coroutines = new List<Coroutine>();
 
         private void StartAttacking()
         {
+            if (_equipedWeapons.Count == 0)
+            {
+                Debug.Log("No weapons");
+            }
+
+            StopAttacking();
+
             foreach (var item in _equipedWeapons)
             {
                 var weapon = item as ShipWeaponModule;
@@ -28,6 +37,8 @@ namespace UGA.Assets.Scripts._BattleShip
             {
                 _mono.StopCoroutine(item);
             }
+
+            _coroutines.Clear();
         }
 
         public void UpdateWeapons(List<ShipModuleData> equipedWeapons)
@@ -35,10 +46,11 @@ namespace UGA.Assets.Scripts._BattleShip
             _equipedWeapons = equipedWeapons;
 
         }
-        public void Init(ShipViewModel shipViewModel, MonoBehaviour mono)
+        public void Init(ShipViewModel shipViewModel, BattleManagerSO battleManagerSO, MonoBehaviour mono)
         {
             _mono = mono;
             _shipViewModel = shipViewModel;
+            _battleManagerSO = battleManagerSO;
 
             _shipViewModel.StartAttackingEvent += StartAttacking;
             _shipViewModel.StopAttackingEvent += StopAttacking;
@@ -59,7 +71,7 @@ namespace UGA.Assets.Scripts._BattleShip
             {
                 yield return new WaitForSeconds(reloadTime);
 
-                Debug.Log(damage);
+                _battleManagerSO.HandleAttack(damage, this);
             }
         }
     }

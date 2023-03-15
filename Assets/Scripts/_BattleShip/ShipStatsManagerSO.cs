@@ -14,13 +14,36 @@ namespace UGA.Assets.Scripts._BattleShip
         public void Init(ShipViewModel shipViewModel)
         {
             _shipViewModel = shipViewModel;
+            _shipViewModel.TakeDamageEvent += HandleDamage;
 
             UpdateStats(new List<ShipModuleData>(), new List<ShipModuleData>());
+        }
+
+        private void OnDisable()
+        {
+            _shipViewModel.TakeDamageEvent -= HandleDamage;
+        }
+
+        private void HandleDamage(float damage)
+        {
+            _currentState.Shield -= damage;
+
+            if(_currentState.Shield < 0)
+            {
+                _currentState.HP += _currentState.Shield;
+                _currentState.Shield = 0;
+            }
+
+            _shipViewModel.CurrentShipState.Value.Shield = _currentState.Shield;
+            _shipViewModel.CurrentShipState.Value.HP = _currentState.HP;
+
+            _shipViewModel.CurrentShipState.Value = _shipViewModel.CurrentShipState.Value;
         }
 
         public void UpdateStats(List<ShipModuleData> equipedWeapons, List<ShipModuleData> equipedUpgrades)
         {
             _currentState = new ShipState(_startState);
+            _currentState.Weapons = new();
 
             foreach (var item in equipedUpgrades)
             {
@@ -30,7 +53,6 @@ namespace UGA.Assets.Scripts._BattleShip
 
                 _currentState.ShieldRechargeRate *= 1 + upgrade.ShieldRechargeRateBonus / 100;
                 _currentState.ShieldRechargeTime *= 1 + upgrade.ReloadTimeBonus / 100;
-                _currentState.Weapons = new();
             }
 
             foreach (var item in equipedWeapons)
@@ -40,8 +62,8 @@ namespace UGA.Assets.Scripts._BattleShip
             }
 
             var stateViewData = new ShipStateViewData(
-                _currentState.Shield, 
-                _currentState.HP,
+                _currentState.HP, 
+                _currentState.Shield,
                 _currentState.ShieldRechargeTime,
                 _currentState.ShieldRechargeRate,
                 new List<ShipWeaponViewData>()
