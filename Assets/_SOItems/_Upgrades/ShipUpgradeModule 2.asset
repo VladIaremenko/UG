@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: ShipUpgradeModule 2
   m_EditorClassIdentifier: 
   Sprite: {fileID: -649999621, guid: 1adb3d8bfcc7f0a47955e3e4b18cfda7, type: 3}
-  ModuleType: 0
   ID: 0
+  Shield: 0
+  HPBonus: 50
+  ReloadTimeChangeBonus: 0
+  ShieldRechargeBonus: 0

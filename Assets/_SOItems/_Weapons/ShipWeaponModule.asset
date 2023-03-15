@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: ShipWeaponModule
   m_EditorClassIdentifier: 
   Sprite: {fileID: -598556092, guid: 1adb3d8bfcc7f0a47955e3e4b18cfda7, type: 3}
-  ModuleType: 1
   ID: 0
+  ReloadTime: 3
+  Damage: 5

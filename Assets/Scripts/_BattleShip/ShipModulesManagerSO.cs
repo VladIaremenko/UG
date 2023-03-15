@@ -36,18 +36,15 @@ namespace UGA.Assets.Scripts._BattleShip
         {
             var module = _shipDataHolderSO.Modules[id];
 
-            switch (module.ModuleType)
+            if(module.GetType() == typeof(ShipUpgradeModule))
             {
-                case ModuleType.Upgrade:
-                    HandleModuleList(module, _equipedUpgrades, _maxUpgradesCount);
-                    _shipViewModel.EquipeUpgradesData.Value = GetViewDataList(_equipedUpgrades);
-                    break;
-                case ModuleType.Weapon:
-                    HandleModuleList(module, _equipedWeapons, _maxWeaponsCount);
-                    _shipViewModel.EquipedWeaponsData.Value = GetViewDataList(_equipedWeapons);
-                    break;
-                default:
-                    break;
+                HandleModuleList(module, _equipedUpgrades, _maxUpgradesCount);
+                _shipViewModel.EquipeUpgradesData.Value = GetViewDataList(_equipedUpgrades);
+            }
+            if (module.GetType() == typeof(ShipWeaponModule))
+            {
+                HandleModuleList(module, _equipedWeapons, _maxWeaponsCount);
+                _shipViewModel.EquipedWeaponsData.Value = GetViewDataList(_equipedWeapons);
             }
         }
 
