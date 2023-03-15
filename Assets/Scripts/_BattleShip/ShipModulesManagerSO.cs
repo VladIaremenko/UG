@@ -11,6 +11,9 @@ namespace UGA.Assets.Scripts._BattleShip
         private ShipViewModel _shipViewModel;
         private ShipDataHolderSO _shipDataHolderSO;
 
+        [SerializeField] private int _maxWeaponsCount;
+        [SerializeField] private int _maxUpgradesCount;
+
         private List<ShipModuleData> _equipedWeapons = new List<ShipModuleData>();
         private List<ShipModuleData> _equipedUpgrades = new List<ShipModuleData>();
 
@@ -36,11 +39,11 @@ namespace UGA.Assets.Scripts._BattleShip
             switch (module.ModuleType)
             {
                 case ModuleType.Upgrade:
-                    HandleModule(module, _equipedUpgrades);
+                    HandleModuleList(module, _equipedUpgrades, _maxUpgradesCount);
                     _shipViewModel.EquipeUpgradesData.Value = GetViewDataList(_equipedUpgrades);
                     break;
                 case ModuleType.Weapon:
-                    HandleModule(module, _equipedWeapons);
+                    HandleModuleList(module, _equipedWeapons, _maxWeaponsCount);
                     _shipViewModel.EquipedWeaponsData.Value = GetViewDataList(_equipedWeapons);
                     break;
                 default:
@@ -53,7 +56,7 @@ namespace UGA.Assets.Scripts._BattleShip
             return list.Select((x, i) => new ShipModuleViewData(x.Sprite, x.ID)).ToList();
         }
 
-        private void HandleModule(ShipModuleData module, List<ShipModuleData> list)
+        private void HandleModuleList(ShipModuleData module, List<ShipModuleData> list, int maxAmount)
         {
             if (list.Contains(module))
             {
@@ -61,7 +64,10 @@ namespace UGA.Assets.Scripts._BattleShip
             }
             else
             {
-                list.Add(module);
+                if(list.Count < maxAmount)
+                {
+                    list.Add(module);
+                }
             }
         }
     }
