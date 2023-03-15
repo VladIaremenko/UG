@@ -48,5 +48,3 @@ namespace UGA.Assets.Scripts._BattleShip
         }
     }
 }
-
-
