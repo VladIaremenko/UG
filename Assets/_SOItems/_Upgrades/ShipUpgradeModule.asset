@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41dae5bc7ba833949a52574c07e46638, type: 3}
-  m_Name: ShipModuleData 3
+  m_Script: {fileID: 11500000, guid: e3a6d95f7fc2a464597a39cb281bf1fc, type: 3}
+  m_Name: ShipUpgradeModule
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 787722725, guid: 1adb3d8bfcc7f0a47955e3e4b18cfda7, type: 3}
-  ModuleType: 1
-  ID: 2
+  Sprite: {fileID: -64511556, guid: 1adb3d8bfcc7f0a47955e3e4b18cfda7, type: 3}
+  ModuleType: 0
+  ID: 0

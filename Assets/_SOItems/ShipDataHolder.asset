@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: ShipDataHolder
   m_EditorClassIdentifier: 
   _shipModules:
-  - {fileID: 11400000, guid: 7d9376ac02703f54c93efef7a9e76602, type: 2}
-  - {fileID: 11400000, guid: 3266b7547b0fc414291f6678c2dea9da, type: 2}
-  - {fileID: 11400000, guid: 5ce9f4442f7ed9b4ea5644dcb488fbe9, type: 2}
-  - {fileID: 11400000, guid: 2fc8f78e008b50c498776596c94ae969, type: 2}
-  - {fileID: 11400000, guid: 3b2303d2f1e23d9458685d5db39cedf4, type: 2}
-  - {fileID: 11400000, guid: dd010586f8baa544b99e52595b854591, type: 2}
-  - {fileID: 11400000, guid: 695bdf9a72bdb5446bbf1d84262ce124, type: 2}
+  - {fileID: 11400000, guid: fc8e8f7f72a70a64084bddd899c3eae5, type: 2}
+  - {fileID: 11400000, guid: a00f4f58bce9d4d468f6f569da49ce3b, type: 2}
+  - {fileID: 11400000, guid: 8d3ce3a083894fb48bb94818829dfbb4, type: 2}
+  - {fileID: 11400000, guid: 55c8916a63c8da54e8d470fe506d067c, type: 2}
+  - {fileID: 11400000, guid: 9fd6b382e1ca54545ab1bc47067761a2, type: 2}
+  - {fileID: 11400000, guid: 16b70e527b4c40541aa6b791d0319dd4, type: 2}
+  - {fileID: 11400000, guid: efa6b62227d013a49bb43c1fab0ff1d0, type: 2}
