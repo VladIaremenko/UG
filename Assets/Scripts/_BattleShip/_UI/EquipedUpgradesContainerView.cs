@@ -10,19 +10,19 @@ namespace UGA.Assets.Scripts._BattleShip._UI
 
         public void HandleItemClick(int id)
         {
-            Debug.Log(id);
+            _shipViewModel.HandleEquipItemClick(id);
         }
 
         public void Init(ShipViewModel shipViewModel)
         {
             HideAllItems();
             _shipViewModel = shipViewModel;
-            _shipViewModel.EquipedWeaponsData.AddListener(RefreshView);
+            _shipViewModel.EquipeUpgradesData.AddListener(RefreshView);
         }
 
         private void OnDisable()
         {
-            _shipViewModel.AllModulesData.RemoveListener(RefreshView);
+            _shipViewModel.EquipeUpgradesData.RemoveListener(RefreshView);
         }
 
         private void RefreshView(List<ShipModuleViewData> modulesList)

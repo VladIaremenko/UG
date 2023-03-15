@@ -24,7 +24,7 @@ namespace UGA.Assets.Scripts._BattleShip._UI
 
         private void OnDisable()
         {
-            _shipViewModel.AllModulesData.RemoveListener(RefreshView);
+            _shipViewModel.EquipedWeaponsData.RemoveListener(RefreshView);
         }
 
         private void RefreshView(List<ShipModuleViewData> modulesList)

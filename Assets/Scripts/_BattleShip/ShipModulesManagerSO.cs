@@ -31,8 +31,6 @@ namespace UGA.Assets.Scripts._BattleShip
 
         private void HandleEquipItemClick(int id)
         {
-            Debug.Log(id);
-
             var module = _shipDataHolderSO.Modules[id];
 
             switch (module.ModuleType)
