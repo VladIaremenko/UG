@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -23,6 +24,7 @@ namespace UGA.Assets.Scripts._BattleShip
             _shipViewModel = shipViewModel;
             _shipDataHolderSO = shipDataHolderSO;
             _shipViewModel.EquipItemClickEvent += HandleEquipItemClick;
+            _shipViewModel.StopBattlingEvent += HandleStopBattle;
             _shipStatsManagerSO = shipStatsManagerSO;
             _shipWeaponManagerSO = shipWeaponManagerSO;
         }
@@ -32,7 +34,13 @@ namespace UGA.Assets.Scripts._BattleShip
             if (_shipViewModel != null)
             {
                 _shipViewModel.EquipItemClickEvent -= HandleEquipItemClick;
+                _shipViewModel.StopBattlingEvent -= HandleStopBattle;
             }
+        }
+
+        private void HandleStopBattle()
+        {
+            _shipStatsManagerSO.UpdateStats(_equipedWeapons, _equipedUpgrades);
         }
 
         private void HandleEquipItemClick(int id)

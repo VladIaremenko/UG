@@ -1,4 +1,5 @@
-﻿using UGA.Assets.Scripts._BattleShip._Game;
+﻿using System;
+using UGA.Assets.Scripts._BattleShip._Game;
 using UnityEngine;
 
 namespace UGA.Assets.Scripts._BattleShip
@@ -15,14 +16,27 @@ namespace UGA.Assets.Scripts._BattleShip
 
         private void OnEnable()
         {
-            _gameStateViewModel.StartBattleEvent += HandleStartBattleEvent;
-            _gameStateViewModel.EndBattleEvent += HandleEndBattleEvent;
+            _gameStateViewModel.GameState.AddListener(HandleGameState);
         }
 
         private void OnDisable()
         {
-            _gameStateViewModel.StartBattleEvent -= HandleStartBattleEvent;
-            _gameStateViewModel.EndBattleEvent -= HandleEndBattleEvent;
+            _gameStateViewModel.GameState.RemoveListener(HandleGameState);
+        }
+
+        private void HandleGameState(GameState state)
+        {
+            switch (state)
+            {
+                case GameState.Default:
+                    HandleEndBattleEvent();
+                    break;
+                case GameState.Battle:
+                    HandleStartBattleEvent();
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void HandleEndBattleEvent()

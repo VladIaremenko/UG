@@ -19,8 +19,8 @@ namespace UGA.Assets.Scripts._BattleShip
             if (_equipedWeapons.Count == 0)
             {
                 Debug.Log("Ship has weapons");
-                _battleManagerSO.StopBattle();
-                return;
+                //_battleManagerSO.StopBattle();
+                //return;
             }
 
             StopAttacking();

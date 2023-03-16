@@ -79,6 +79,12 @@ namespace UGA.Assets.Scripts._BattleShip
         Upgrade,
         Weapon
     }
+
+    public enum GameState
+    {
+        Default,
+        Battle
+    }
 }
 
 
