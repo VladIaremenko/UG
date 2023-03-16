@@ -27,12 +27,12 @@ namespace UGA.Assets.Scripts._BattleShip
 
         private void HandleEndBattleEvent()
         {
-            _shipViewModel.StopAttacking();
+            _shipViewModel.StopBattling();
         }
 
         private void HandleStartBattleEvent()
         {
-            _shipViewModel.StartAttacking();
+            _shipViewModel.StartBattling();
         }
     }
 }

@@ -29,7 +29,7 @@ namespace UGA.Assets.Scripts._BattleShip._Game
             }
         }
 
-        public void HandlePlayerDead()
+        public void StopBattle()
         {
             _gameStateViewMode.StopBattle();
         }

@@ -12,19 +12,21 @@ namespace UGA.Assets.Scripts._BattleShip
         private BattleManagerSO _battleManager;
         private ShipViewModel _shipViewModel;
         private ShipState _currentState;
+        private ShipShieldManagerSO _shipShieldManager;
 
-        public void Init(ShipViewModel shipViewModel, BattleManagerSO battleManager)
+        public void Init(ShipViewModel shipViewModel, BattleManagerSO battleManager, ShipShieldManagerSO shipShieldManagerSO)
         {
             _shipViewModel = shipViewModel;
             _shipViewModel.TakeDamageEvent += HandleDamage;
             _battleManager = battleManager;
+            _shipShieldManager = shipShieldManagerSO;
 
             UpdateStats(new List<ShipModuleData>(), new List<ShipModuleData>());
         }
 
         private void OnDisable()
         {
-            if(_shipViewModel!= null)
+            if (_shipViewModel != null)
             {
                 _shipViewModel.TakeDamageEvent -= HandleDamage;
             }
@@ -34,7 +36,7 @@ namespace UGA.Assets.Scripts._BattleShip
         {
             _currentState.Shield -= damage;
 
-            if(_currentState.Shield < 0)
+            if (_currentState.Shield < 0)
             {
                 _currentState.HP += _currentState.Shield;
                 _currentState.Shield = 0;
@@ -46,8 +48,8 @@ namespace UGA.Assets.Scripts._BattleShip
 
             if (_currentState.HP <= 0)
             {
-                Debug.Log("Dead");
-                _battleManager.HandlePlayerDead();
+                Debug.Log("Player is dead");
+                _battleManager.StopBattle();
             }
         }
 
@@ -66,6 +68,9 @@ namespace UGA.Assets.Scripts._BattleShip
                 _currentState.ShieldRechargeTime *= 1 + upgrade.ReloadTimeBonus / 100;
             }
 
+            _currentState.MaxShield = _currentState.Shield;
+            _currentState.MaxHP = _currentState.HP;
+
             foreach (var item in equipedWeapons)
             {
                 var weapon = item as ShipWeaponModule;
@@ -73,7 +78,7 @@ namespace UGA.Assets.Scripts._BattleShip
             }
 
             var stateViewData = new ShipStateViewData(
-                _currentState.HP, 
+                _currentState.HP,
                 _currentState.Shield,
                 _currentState.ShieldRechargeTime,
                 _currentState.ShieldRechargeRate,
@@ -86,7 +91,18 @@ namespace UGA.Assets.Scripts._BattleShip
                 stateViewData.WeaponsData.Add(new ShipWeaponViewData(weapon.Damage, weapon.ReloadTime));
             }
 
+            _shipShieldManager.UpdateShieldsData(_currentState.ShieldRechargeRate, _currentState.ShieldRechargeTime);
+
             _shipViewModel.CurrentShipState.Value = stateViewData;
+        }
+
+        public void HandleShieldRecharge(float rate)
+        {
+            _currentState.Shield += rate;
+            _currentState.Shield = Mathf.Clamp(_currentState.Shield, 0, _currentState.MaxShield);
+
+            _shipViewModel.CurrentShipState.Value.Shield = _currentState.Shield;
+            _shipViewModel.CurrentShipState.Value = _shipViewModel.CurrentShipState.Value;
         }
     }
 }

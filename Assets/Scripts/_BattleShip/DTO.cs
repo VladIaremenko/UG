@@ -23,6 +23,12 @@ namespace UGA.Assets.Scripts._BattleShip
     {
         public float HP;
         public float Shield;
+
+        [HideInInspector]
+        public float MaxHP;
+        [HideInInspector]
+        public float MaxShield;
+
         public float ShieldRechargeTime;
         public float ShieldRechargeRate;
 

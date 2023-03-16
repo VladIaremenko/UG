@@ -12,8 +12,8 @@ namespace UGA.Assets.Scripts._BattleShip
         public event Action<int> EquipItemClickEvent = new((x) => { });
         public event Action<float> TakeDamageEvent = new((x) => { });
 
-        public event Action StartAttackingEvent = new(() => { });
-        public event Action StopAttackingEvent = new(() => { });
+        public event Action StartBattlingEvent = new(() => { });
+        public event Action StopBattlingEvent = new(() => { });
 
         public ObservableVariable<List<ShipModuleViewData>> AllModulesData = new();
         public ObservableVariable<List<ShipModuleViewData>> EquipedWeaponsData = new();
@@ -30,14 +30,14 @@ namespace UGA.Assets.Scripts._BattleShip
             EquipItemClickEvent.Invoke(id);
         }
 
-        public void StartAttacking()
+        public void StartBattling()
         {
-            StartAttackingEvent.Invoke();
+            StartBattlingEvent.Invoke();
         }
 
-        public void StopAttacking()
+        public void StopBattling()
         {
-            StopAttackingEvent.Invoke();
+            StopBattlingEvent.Invoke();
         }
 
         public void HandleTakeDamage(float damage)

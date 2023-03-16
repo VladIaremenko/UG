@@ -18,7 +18,9 @@ namespace UGA.Assets.Scripts._BattleShip
         {
             if (_equipedWeapons.Count == 0)
             {
-                Debug.Log("No weapons");
+                Debug.Log("Ship has weapons");
+                _battleManagerSO.StopBattle();
+                return;
             }
 
             StopAttacking();
@@ -33,8 +35,6 @@ namespace UGA.Assets.Scripts._BattleShip
 
         private void StopAttacking()
         {
-            Debug.Log("Stopped attacking");
-
             foreach (var item in _coroutines)
             {
                 _mono.StopCoroutine(item);
@@ -54,16 +54,16 @@ namespace UGA.Assets.Scripts._BattleShip
             _shipViewModel = shipViewModel;
             _battleManagerSO = battleManagerSO;
 
-            _shipViewModel.StartAttackingEvent += StartAttacking;
-            _shipViewModel.StopAttackingEvent += StopAttacking;
+            _shipViewModel.StartBattlingEvent += StartAttacking;
+            _shipViewModel.StopBattlingEvent += StopAttacking;
         }
 
         private void OnDisable()
         {
             if (_shipViewModel != null)
             {
-                _shipViewModel.StartAttackingEvent -= StartAttacking;
-                _shipViewModel.StopAttackingEvent -= StopAttacking;
+                _shipViewModel.StartBattlingEvent -= StartAttacking;
+                _shipViewModel.StopBattlingEvent -= StopAttacking;
             }
         }
 
