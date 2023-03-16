@@ -3392,8 +3392,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 30f0d6fd4b13e4b4f93c431f825e4cc2, type: 2}
-        m_TargetAssemblyTypeName: UGA.Assets.Scripts._BattleShip._Game.GameStateViewModel,
+      - m_Target: {fileID: 11400000, guid: 8b86fe73cacf1c643a4355d8edabb0be, type: 2}
+        m_TargetAssemblyTypeName: UGA.Assets.Scripts._BattleShip._Game.BattleManagerSO,
           Assembly-CSharp
         m_MethodName: StartBattle
         m_Mode: 1

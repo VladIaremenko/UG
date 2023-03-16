@@ -14,6 +14,8 @@ namespace UGA.Assets.Scripts._BattleShip
         private List<ShipModuleData> _equipedWeapons = new List<ShipModuleData>();
         private List<Coroutine> _coroutines = new List<Coroutine>();
 
+        public bool CanAttack => _equipedWeapons.Count > 0;
+
         private void StartAttacking()
         {
             if (_equipedWeapons.Count == 0)

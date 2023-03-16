@@ -29,6 +29,20 @@ namespace UGA.Assets.Scripts._BattleShip._Game
             }
         }
 
+        public void StartBattle()
+        {
+            foreach (var item in _shipAttackInterfaces)
+            {
+                if (!item.Value.CanAttack)
+                {
+                    Debug.Log("Ship has no weapons. Can't start battle");
+                    return;
+                }
+            }
+
+            _gameStateViewMode.StartBattle();
+        }
+
         public void StopBattle()
         {
             _gameStateViewMode.StopBattle();
