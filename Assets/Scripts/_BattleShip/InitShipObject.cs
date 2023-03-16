@@ -37,7 +37,7 @@ namespace UGA.Assets.Scripts._BattleShip
             _shipWeaponManagerSO.Init(_shipViewModel, _battleManagerSO, this);
             _equipedWeaponsContainerView.Init(_shipViewModel);
             _equipedUpgradesContainerView.Init(_shipViewModel);
-            _shipStatsManager.Init(_shipViewModel);
+            _shipStatsManager.Init(_shipViewModel, _battleManagerSO);
             _shipStateView.Init(_shipViewModel);
             _shipGameStateListener.Init(_shipViewModel);
             _shipAttackInteface.Init(_shipViewModel);

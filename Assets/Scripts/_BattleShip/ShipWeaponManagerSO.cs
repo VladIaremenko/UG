@@ -33,6 +33,8 @@ namespace UGA.Assets.Scripts._BattleShip
 
         private void StopAttacking()
         {
+            Debug.Log("Stopped attacking");
+
             foreach (var item in _coroutines)
             {
                 _mono.StopCoroutine(item);

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UGA.Assets.Scripts._BattleShip._Game;
 using UnityEngine;
 
 namespace UGA.Assets.Scripts._BattleShip
@@ -8,20 +9,25 @@ namespace UGA.Assets.Scripts._BattleShip
     {
         [SerializeField] private ShipState _startState;
 
+        private BattleManagerSO _battleManager;
         private ShipViewModel _shipViewModel;
         private ShipState _currentState;
 
-        public void Init(ShipViewModel shipViewModel)
+        public void Init(ShipViewModel shipViewModel, BattleManagerSO battleManager)
         {
             _shipViewModel = shipViewModel;
             _shipViewModel.TakeDamageEvent += HandleDamage;
+            _battleManager = battleManager;
 
             UpdateStats(new List<ShipModuleData>(), new List<ShipModuleData>());
         }
 
         private void OnDisable()
         {
-            _shipViewModel.TakeDamageEvent -= HandleDamage;
+            if(_shipViewModel!= null)
+            {
+                _shipViewModel.TakeDamageEvent -= HandleDamage;
+            }
         }
 
         private void HandleDamage(float damage)
@@ -36,8 +42,13 @@ namespace UGA.Assets.Scripts._BattleShip
 
             _shipViewModel.CurrentShipState.Value.Shield = _currentState.Shield;
             _shipViewModel.CurrentShipState.Value.HP = _currentState.HP;
-
             _shipViewModel.CurrentShipState.Value = _shipViewModel.CurrentShipState.Value;
+
+            if (_currentState.HP <= 0)
+            {
+                Debug.Log("Dead");
+                _battleManager.HandlePlayerDead();
+            }
         }
 
         public void UpdateStats(List<ShipModuleData> equipedWeapons, List<ShipModuleData> equipedUpgrades)

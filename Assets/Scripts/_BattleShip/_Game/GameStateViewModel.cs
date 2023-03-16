@@ -13,6 +13,11 @@ namespace UGA.Assets.Scripts._BattleShip._Game
         {
             StartBattleEvent.Invoke();
         }
+
+        public void StopBattle()
+        {
+            EndBattleEvent.Invoke();
+        }
     }
 }
 
